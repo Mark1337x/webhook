@@ -6,6 +6,7 @@ const moment = require("moment");
 const cache = require("./cache.json");
 const fs = require("fs");
 const { join } = require("path");
+require('dotenv').config();
 
 const Giveaway = require("./handlers/giveaway.js");
 
@@ -50,7 +51,8 @@ new class extends Client {
             command.execute(message);
         });
 
-        this.login(this.config.token);
+        client.login(process.env.TOKEN);
+
     }
 
     async clearCache() {
